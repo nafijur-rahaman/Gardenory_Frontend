@@ -7,10 +7,10 @@ import "./style.css";
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-  const { user, logout } = useContext(AuthContext);
+  const { user, LogoutUser } = useContext(AuthContext);
   const handleLogout = () =>{
     console.log('logout')
-    logout();
+    LogoutUser();
     setIsUserDropdownOpen(false);
   }
   console.log(user);
@@ -36,7 +36,6 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <ThemeSwitcher />
 
-          {/* Auth: If logged in */}
           {user ? (
             <div className="relative">
               <button
@@ -63,7 +62,7 @@ const Navbar = () => {
                   <ul className="py-2 text-sm">
                     <li>
                       <button
-                        onClick={logout}
+                        onClick={handleLogout}
                         className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                       >
                         Sign out
@@ -75,11 +74,13 @@ const Navbar = () => {
             </div>
           ) : (
             <a
-              href="/login"
-              className="px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition"
-            >
+              href="/login" className="px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition">
               Sign In
             </a>
+
+
+
+
           )}
 
           {/* Mobile Toggle */}
