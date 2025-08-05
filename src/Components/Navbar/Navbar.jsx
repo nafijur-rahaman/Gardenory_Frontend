@@ -1,83 +1,119 @@
-import { useState } from "react";
-import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeSwitcher from "../../Components/Switcher/ThemeSwitcher";
+import { AuthContext } from "../../Context/AuthContext";
+import "./style.css";
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () =>{
+    console.log('logout')
+    logout();
+    setIsUserDropdownOpen(false);
+  }
+  console.log(user);
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md fixed w-full z-50">
-      <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav className="bg-white dark:bg-gray-900 fixed w-full z-50 shadow-sm border-b border-green-200 dark:border-gray-700 transition-all">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center space-x-3">
-          <span className="text-4xl font-bold dark:text-white text-[#0F4229]">
+        <a href="/" className="flex items-center space-x-2">
+          <span className="text-3xl font-bold text-green-800 dark:text-white tracking-tight">
             Gradenory
           </span>
         </a>
 
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex space-x-10 font-medium text-lg  dark:text-gray-200">
-          <li>
-            <a href="#" className="hover:text-[#4B9B4F]  dark:hover:text-[#4B9B4F] transition">Home</a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F] transition">Explore Gardeners</a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F] transition">Browse Tips</a>
-          </li>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center space-x-10 text-lg font-medium dark:text-gray-200 text-gray-800">
+          <li><a href="#" className="hover:text-green-600 dark:hover:text-green-400 transition">Home</a></li>
+          <li><a href="#" className="hover:text-green-600 dark:hover:text-green-400 transition">Explore Gardeners</a></li>
+          <li><a href="#" className="hover:text-green-600 dark:hover:text-green-400 transition">Tips</a></li>
         </ul>
 
-        {/* Right side: user and theme switch */}
-        <div className="flex items-center justify-center space-x-4">
-
+        {/* Right: Theme & Auth */}
+        <div className="flex items-center space-x-4">
           <ThemeSwitcher />
-          {/* User dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
-              className="focus:outline-none"
-            >
-              <img
-                className="w-8 h-8 rounded-full ring-2 ring-[#4B9B4F] dark:ring-gray-700"
-                src="/docs/images/people/profile-picture-3.jpg"
-                alt="User"
-              />
-            </button>
-            {isUserDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50">
-                <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Bonnie Green</p>
-                  <p className="text-sm text-gray-500 truncate dark:text-gray-400">name@flowbite.com</p>
-                </div>
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                  <li>
-                    <a href="#" className="block text-lg text-red-700  px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Sign out</a>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
 
-          {/* Mobile Toggle Button */}
+          {/* Auth: If logged in */}
+          {user ? (
+            <div className="relative">
+              <button
+                onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+                className="focus:outline-none"
+              >
+                <img
+                  src={user.photoURL || "/default-avatar.png"}
+                  alt="User"
+                  className="w-9 h-9 rounded-full border-2 border-green-500 dark:border-gray-500 shadow-sm object-cover"
+                />
+              </button>
+
+              {isUserDropdownOpen && (
+                <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg border dark:border-gray-700 overflow-hidden z-50 animate-fade-in">
+                  <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                      {user.displayName || "Anonymous User"}
+                    </p>
+                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                      {user.email || "No email"}
+                    </p>
+                  </div>
+                  <ul className="py-2 text-sm">
+                    <li>
+                      <button
+                        onClick={logout}
+                        className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                      >
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <a
+              href="/login"
+              className="px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition"
+            >
+              Sign In
+            </a>
+          )}
+
+          {/* Mobile Toggle */}
           <button
-            className="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
+            className="md:hidden text-green-700 dark:text-gray-200 focus:outline-none"
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
-            {isNavOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isNavOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile nav */}
+      {/* Mobile Menu */}
       {isNavOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 px-4 py-3 space-y-2 font-medium shadow-md">
-          <a href="#" className="block text-gray-700 dark:text-gray-200 hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F]">Home</a>
-          <a href="#" className="block text-gray-700 dark:text-gray-200 hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F]">Explore Gradeners</a>
-          <a href="#" className="block text-gray-700 dark:text-gray-200 hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F]">Services</a>
-          <a href="#" className="block text-gray-700 dark:text-gray-200 hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F]">Pricing</a>
-          <a href="#" className="block text-gray-700 dark:text-gray-200 hover:text-[#4B9B4F] dark:hover:text-[#4B9B4F]">Contact</a>
+        <div className="md:hidden bg-white dark:bg-gray-900 px-4 py-4 space-y-3 shadow-md border-t border-green-200 dark:border-gray-700">
+          <a href="#" className="block text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition">Home</a>
+          <a href="#" className="block text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition">Explore Gardeners</a>
+          <a href="#" className="block text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition">Tips</a>
+
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="block w-full text-left text-red-600 hover:text-red-700 transition"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <a
+              href="/login"
+              className="block px-4 py-2 text-white bg-green-600 rounded-md text-center hover:bg-green-700 transition"
+            >
+              Sign In
+            </a>
+          )}
         </div>
       )}
     </nav>
