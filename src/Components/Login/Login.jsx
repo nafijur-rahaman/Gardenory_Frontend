@@ -1,6 +1,7 @@
 import { use, useState } from "react";
 import { FaLeaf, FaEnvelope, FaLock } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthContext";
+import { useLocation, useNavigate } from 'react-router';
 import Swal from "sweetalert2";
 import "./style.css";
 
@@ -8,6 +9,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { LoginUser, loginWithGoogle } = use(AuthContext);
+  	const navigate = useNavigate()
+	const path = useLocation()
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,6 +27,7 @@ const Login = () => {
             icon: "success",
             draggable: true,
           });
+          navigate(path.state||"/")
         }
       })
       .catch(() => {
@@ -44,6 +48,7 @@ const Login = () => {
             icon: "success",
             draggable: true,
           });
+          navigate(path.state||"/")
         }
       })
       .catch(() => {
@@ -58,7 +63,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-20 bg-green-50 flex items-center justify-center px-4">
+    <div className="min-h-screen pt-25 pb-20 bg-green-50 flex items-center justify-center px-4">
       <div className="relative max-w-lg w-full bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-green-200">
 
         <div className="absolute -top-20 -left-20 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
