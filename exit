@@ -1,0 +1,35 @@
+[33mcommit a33c8f2ffb4b139f751288456e76518a5565c65e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: nafijur-rahaman <20234103116@cse.bubt.edu.bd>
+Date:   Wed Aug 6 22:21:36 2025 +0600
+
+     create private route and loading spinner
+
+[33mcommit 23be8a1263f7e9281123a44f9d41ea8bd219d419[m
+Author: nafijur-rahaman <20234103116@cse.bubt.edu.bd>
+Date:   Tue Aug 5 23:34:29 2025 +0600
+
+    dynamic navbar
+
+[33mcommit 932050eb85c60683fa87d1eec96254ee3eee4b42[m
+Author: nafijur-rahaman <20234103116@cse.bubt.edu.bd>
+Date:   Tue Aug 5 23:30:16 2025 +0600
+
+    make register and login page and make functionality
+
+[33mcommit 9d2fc6b042ab5dd2e5cb8ddad58f7107a33fab4c[m
+Author: nafijur-rahaman <20234103116@cse.bubt.edu.bd>
+Date:   Mon Aug 4 23:40:13 2025 +0600
+
+     setup firebase, make auth context and provider
+
+[33mcommit eb487d1dfec366f698a15a5e7dc1940787936752[m
+Author: nafijur-rahaman <20234103116@cse.bubt.edu.bd>
+Date:   Mon Aug 4 23:24:48 2025 +0600
+
+    make navbar footer and add feature theme switching
+
+[33mcommit 0708ad15bf1353fa7ee78b66b23f0caf3d32e619[m
+Author: nafijur-rahaman <20234103116@cse.bubt.edu.bd>
+Date:   Sun Aug 3 21:40:23 2025 +0600
+
+    init project

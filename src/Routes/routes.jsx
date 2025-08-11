@@ -7,11 +7,17 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import ExGarden from "../Pages/ExGarden/ExGarden";
 import ShGarden from "../Pages/ShGarden/ShGarden";
 import Mytips from "../Pages/Mytips/Mytips";
+import BrowseTips from "../Pages/BrowseTips/BrowseTips";
+import TipDetails from "../Pages/TipDetails/TipDetails";
+import UpdateTip from "../Pages/UpdateTip/UpdateTip";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Loading from "../Components/Loader/Loader";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -31,6 +37,27 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
           <ExGarden></ExGarden>
         </PrivateRoute>
+        
+      },
+      {
+        path: "/browse-tips",
+        element: <BrowseTips></BrowseTips>
+
+      },
+      {
+        path: "/tip-details/:id",
+        element: <PrivateRoute>
+          <TipDetails></TipDetails>
+        </PrivateRoute>
+
+      },
+      {
+        path: "/update-tip/:id",
+        element: <PrivateRoute>
+          <UpdateTip></UpdateTip>
+        </PrivateRoute>,
+       
+
       },
       {
         path: "/sh-garden-tips",
@@ -43,7 +70,8 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
          <Mytips></Mytips>
         </PrivateRoute>
-      }
+      },
     ],
-  },
+
+  }
 ]);

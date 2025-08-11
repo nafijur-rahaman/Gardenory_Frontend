@@ -54,6 +54,18 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
+              to="/browse-tips"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-green-600 dark:text-green-400 font-semibold transition"
+                  : "hover:text-green-600 dark:hover:text-green-400 transition"
+              }
+            >
+              Browse Tips
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/sh-garden-tips"
               className={({ isActive }) =>
                 isActive
