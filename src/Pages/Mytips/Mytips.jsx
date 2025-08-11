@@ -1,13 +1,18 @@
+import { use } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
+
 
 const Mytips = () => {
   const [tips, setTips] = useState([]);
   const [showConfirm, setShowConfirm] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const navigate = useNavigate();
+  const {user} = use(AuthContext);
 
-  const userEmail = "user@example.com"; // From auth
+  const userEmail =  user.email; // From auth
 
   useEffect(() => {
     fetch("http://localhost:3000/tips")
@@ -33,6 +38,7 @@ const Mytips = () => {
     if (data.success) {
       setTips(tips.filter(t => t._id !== deleteId));
       setShowConfirm(false);
+
     }
   };
 
@@ -76,24 +82,27 @@ const Mytips = () => {
           </table>
         </div>
 
-        {/* Delete Confirmation Modal */}
+ 
+
+
         {showConfirm && (
-          <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center">
-            <div className="bg-white rounded-lg p-6 w-80 shadow-lg">
-              <h3 className="text-lg font-semibold mb-4">Are you sure?</h3>
-              <p className="mb-6">This action will permanently delete the tip.</p>
-              <div className="flex justify-end gap-3">
-                <button
-                  onClick={() => setShowConfirm(false)}
-                  className="px-4 py-2 bg-gray-300 rounded"
-                >
-                  Cancel
-                </button>
+          <div className="fixed inset-0 flex items-center justify-center z-50">
+            <div className="bg-white p-4 rounded-lg">
+              <p className="text-lg font-semibold mb-4">
+                Are you sure you want to delete this tip?
+              </p>
+              <div className="flex justify-end">
                 <button
                   onClick={deleteTip}
-                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
                 >
                   Delete
+                </button>
+                <button
+                  onClick={() => setShowConfirm(false)}
+                  className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                >
+                  Cancel
                 </button>
               </div>
             </div>

@@ -34,44 +34,53 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ex-gardeners",
-        element: <PrivateRoute>
-          <ExGarden></ExGarden>
-        </PrivateRoute>
-        
+        element: (
+          <PrivateRoute>
+            <ExGarden></ExGarden>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/browse-tips",
-        element: <BrowseTips></BrowseTips>
-
+        element: <BrowseTips></BrowseTips>,
       },
       {
         path: "/tip-details/:id",
-        element: <PrivateRoute>
-          <TipDetails></TipDetails>
-        </PrivateRoute>
-
+        element: (
+          <PrivateRoute>
+            <TipDetails></TipDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/update-tip/:id",
-        element: <PrivateRoute>
-          <UpdateTip></UpdateTip>
-        </PrivateRoute>,
-       
-
+        element: (
+          <PrivateRoute>
+            <UpdateTip />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          const res = await fetch(`http://localhost:3000/tips/${params.id}`);
+          const data = await res.json();
+          return data.data;
+        },
       },
       {
         path: "/sh-garden-tips",
-        element: <PrivateRoute>
-          <ShGarden></ShGarden>
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ShGarden></ShGarden>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-tips",
-        element: <PrivateRoute>
-         <Mytips></Mytips>
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <Mytips></Mytips>
+          </PrivateRoute>
+        ),
       },
     ],
-
-  }
+  },
 ]);

@@ -1,12 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
+import Swal from "sweetalert2";
 
 
 
 
 const ShGarden = () => {
 
-
+  const {user} =  useContext(AuthContext)
+  // console.log(user)
     const [formData, setFormData] = useState({
     title: "",
     plantType: "",
@@ -15,8 +19,8 @@ const ShGarden = () => {
     imagesUrl: "",
     category: "",
     availability: "",
-    userEmail: "user@example.com",
-    userName: "John Doe" 
+    userEmail: user.email,
+    userName: user.displayName
   });
 
   const handleChange = (e) => {
@@ -25,9 +29,11 @@ const ShGarden = () => {
       [e.target.name]: e.target.value
     });
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(formData)
     const res = await fetch("http://localhost:3000/tips", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,7 +41,22 @@ const ShGarden = () => {
     });
     const data = await res.json();
     if (data.success) {
-      alert("Tip added successfully!");
+      
+      Swal.fire({
+        title: "Garden Tip Shared Successfully",
+        icon: "success",
+        confirmButtonText: "OK",
+        showCloseButton: true
+      })
+     e.target.reset();
+      
+    }else{
+      Swal.fire({
+        title: "Something went wrong",
+        icon: "error",
+        confirmButtonText: "OK",
+        showCloseButton: true
+      })
     }
   };
 
@@ -43,7 +64,7 @@ const ShGarden = () => {
 <>
  <div className="flex justify-center p-6 bg-gray-100 min-h-screen">
       <div className="bg-white shadow-lg rounded-xl w-full max-w-2xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-green-700">Share a Garden Tip 🌱</h2>
+        <h2 className="text-2xl font-bold mb-6 text-green-700">Share a Garden Tip</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           
           {/* Title */}

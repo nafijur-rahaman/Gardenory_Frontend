@@ -19,7 +19,7 @@ const BrowseTips = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="bg-white shadow-lg rounded-xl p-6">
-        <h2 className="text-2xl font-bold mb-4 text-green-700">🌿 Browse Public Tips</h2>
+        <h2 className="text-2xl font-bold mb-4 text-green-700">Browse Public Tips</h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead className="bg-green-600 text-white">
