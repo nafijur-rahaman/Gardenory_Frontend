@@ -13,7 +13,7 @@ const Navbar = () => {
   
   const dropdownRef = useRef(null);
 
-  // Close user dropdown on outside click
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center space-x-2">
-          <span className="text-3xl font-extrabold tracking-tight text-green-800 dark:text-green-400 select-none">
+          <span className="text-3xl  font-extrabold tracking-tight text-green-800 dark:text-green-400 select-none">
             Gradenory
           </span>
         </a>
@@ -82,7 +82,7 @@ const Navbar = () => {
           )}
         </ul>
 
-        {/* Right side (theme + user menu) */}
+   
         <div className="flex items-center space-x-4 relative">
           <ThemeSwitcher />
 
@@ -93,22 +93,22 @@ const Navbar = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <button
-        onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
-        aria-label="User menu"
-        aria-haspopup="true"
-        aria-expanded={isUserDropdownOpen}
-        className="focus:outline-none focus:ring-2 focus:ring-green-500 rounded-full"
-        type="button"
-      >
-        <img
-          src={user.photoURL || "/default-avatar.png"}
-          alt={user.displayName || "User avatar"}
-          className="w-10 h-10 rounded-full border-2 border-green-500 dark:border-green-400 shadow-md object-cover"
-        />
-      </button>
+<button
+  onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+  aria-label="User menu"
+  aria-haspopup="true"
+  aria-expanded={isUserDropdownOpen}
+  className="focus:outline-none focus:ring-2 focus:ring-green-500 rounded-full w-10 h-10 md:w-10 md:h-10 overflow-hidden"
+  type="button"
+>
+  <img
+    src={user.photoURL || "/default-avatar.png"}
+    alt={user.displayName || "User avatar"}
+    className="w-full h-full object-cover rounded-full border-2 border-green-500 dark:border-green-400 shadow-md"
+  />
+</button>
 
-      {/* Tooltip on hover */}
+
 {isHovered && (
   <div className="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-xs rounded px-2 py-1 whitespace-nowrap shadow-lg z-50 pointer-events-none">
     {user.displayName || "Anonymous User"}
@@ -146,12 +146,22 @@ const Navbar = () => {
       </div>
     </div>
           ) : (
-            <NavLink
-              to="/login"
-              className="px-5 py-2 rounded-md bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors shadow-md"
-            >
-              Sign In
-            </NavLink>
+<NavLink
+  to="/login"
+  className="
+    px-2 py-1
+    text-xs sm:text-sm md:text-base
+    rounded-md
+    bg-green-600 text-white font-semibold
+    hover:bg-green-700 transition-colors shadow-md
+    flex items-center justify-center
+    md:px-4 md:py-2
+  "
+>
+  Sign In
+</NavLink>
+
+
           )}
 
           {/* Mobile Hamburger */}
