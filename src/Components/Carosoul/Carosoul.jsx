@@ -40,7 +40,7 @@ export default function Carousel() {
             {/* Text container */}
             <div className="absolute bottom-16 left-10 md:left-20 max-w-xl text-white">
               <h2
-                className="text-3xl md:text-5xl font-extrabold mb-4 animate-fade-slide-up"
+                className="text-3xl md:text-4xl font-extrabold mb-4 animate-fade-slide-up"
                 style={{ animationDuration: "1s", animationFillMode: "forwards" }}
               >
                 {title}
