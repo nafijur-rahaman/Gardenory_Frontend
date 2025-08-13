@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "./style.css"
 
 export default function Carousel() {
   return (
@@ -11,7 +12,7 @@ export default function Carousel() {
       autoplay={{ delay: 4000, disableOnInteraction: false }}
       loop={true}
       modules={[Navigation, Autoplay]}
-      className="relative w-full h-[500px] md:h-[600px] rounded-lg overflow-hidden shadow-2xl"
+      className="relative w-full h-[500px] md:h-[600px]  overflow-hidden shadow-2xl"
     >
       {[{
         img: "/caro-1.jpg",
