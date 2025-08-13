@@ -13,7 +13,7 @@ const Mytips = () => {
   const userEmail = user.email;
 
   useEffect(() => {
-    fetch("http://localhost:3000/tips")
+    fetch("https://gardenoybackend.vercel.app/tips")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -29,7 +29,7 @@ const Mytips = () => {
   };
 
   const deleteTip = async () => {
-    const res = await fetch(`http://localhost:3000/tips/${deleteId}`, {
+    const res = await fetch(`https://gardenoybackend.vercel.app/tips/${deleteId}`, {
       method: "DELETE",
     });
     const data = await res.json();

@@ -7,7 +7,7 @@ const TipDetails = () => {
   const [tip, setTip] = useState(data);
 
   const handleLike = async () => {
-    const res = await fetch(`http://localhost:3000/tips/${tip._id}/like`, {
+    const res = await fetch(`https://gardenoybackend.vercel.app/tips/${tip._id}/like`, {
       method: "PUT",
     });
     const data = await res.json();

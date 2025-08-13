@@ -21,7 +21,7 @@ const UpdateTip = () => {
 
     const { _id, ...submitData } = newFormdata;
 
-    const res = await fetch(`http://localhost:3000/tips/${id}`, {
+    const res = await fetch(`https://gardenoybackend.vercel.app/tips/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(submitData),

@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
             <TipDetails></TipDetails>
           </PrivateRoute>
         ),
-        loader: ({params})=> fetch(`http://localhost:3000/tips/${params.id}`),
+        loader: ({params})=> fetch(`https://gardenoybackend.vercel.app/tips/${params.id}`),
         hydrateFallbackElement: <Loading></Loading>,
       },
       {
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:3000/tips/${params.id}`);
+          const res = await fetch(`https://gardenoybackend.vercel.app/tips/${params.id}`);
           const data = await res.json();
           return data.data;
         },

@@ -4,7 +4,7 @@ const ExGarden = () => {
   const [gardeners, setGardeners] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/gardeners")
+    fetch("https://gardenoybackend.vercel.app/gardeners")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setGardeners(data.data);

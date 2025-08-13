@@ -7,7 +7,7 @@ const BrowseTips = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/tips")
+    fetch("https://gardenoybackend.vercel.app/tips")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

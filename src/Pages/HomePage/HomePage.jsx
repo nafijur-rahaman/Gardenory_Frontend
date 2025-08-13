@@ -31,11 +31,11 @@ const HomePage = () => {
   const [trendingTips, setTrendingTips] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/top-gardeners?status=Active&limit=6")
+    fetch("https://gardenoybackend.vercel.app/top-gardeners?status=Active&limit=6")
       .then((res) => res.json())
       .then((data) => setGardeners(data));
 
-    fetch("http://localhost:3000/trending-tips?sort=likes&limit=6")
+    fetch("https://gardenoybackend.vercel.app/trending-tips?sort=likes&limit=6")
       .then((res) => res.json())
       .then((data) => setTrendingTips(data));
   }, []);
