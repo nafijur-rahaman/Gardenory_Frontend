@@ -1,12 +1,16 @@
-# React + Vite
+🌱 Gardenory
+Live Site: https://gardenory-frontend.vercel.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
+📌 Gardening Tips Hub – Share and explore practical gardening tips from fellow enthusiasts.
 
-Currently, two official plugins are available:
+🧑‍🌾 Find Local Gardeners – Connect with nearby gardeners for collaborations or services.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌿 Plant Care Q&A – Ask questions and get expert or community advice on plant care.
 
-## Expanding the ESLint configuration
+📅 Gardening Events – Post your own events or join others’ workshops, meetups, and plant swaps.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+♻️ Interest-Based Networking – Connect with people passionate about composting, hydroponics, balcony gardens, and more.
+
+📖 Project Description
+Gardenory is an interactive platform designed for gardening enthusiasts to connect, share knowledge, and grow together—both plants and friendships. Whether you’re looking for local gardeners, seeking plant care advice, hosting a workshop, or exploring sustainable gardening techniques like composting and hydroponics, Gardenory is your go-to community hub.
