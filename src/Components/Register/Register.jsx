@@ -75,7 +75,7 @@ const Register = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         Swal.fire({
           title: "Registration Failed!",
           text: "Please try again.",
