@@ -1,0 +1,78 @@
+/* Green-themed Garden Card */
+
+.card {
+  width: 200px;
+  height: 320px; /* increased height to fit image */
+  border-radius: 20px;
+  background: #e6f4ea; /* soft greenish background */
+  position: relative;
+  padding: 1.8rem 1.8rem 3.5rem 1.8rem; /* more bottom padding for button */
+  border: 2px solid #a5d6a7; /* lighter green border */
+  transition: 0.5s ease-out;
+  overflow: visible;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.15);
+}
+
+.card-details {
+  color: #2e4a20; /* dark green text */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5em;
+  text-align: center;
+}
+
+.card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #2e7d32; /* rich green */
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  opacity: 0;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.4);
+}
+
+.text-body {
+  color: #4a6b31; /* medium green */
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* Text */
+.text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #1b3a10; /* very dark green */
+}
+
+/* Hover */
+.card:hover {
+  border-color: #2e7d32;
+  box-shadow: 0 6px 20px 0 rgba(46, 125, 50, 0.4);
+}
+
+.card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}

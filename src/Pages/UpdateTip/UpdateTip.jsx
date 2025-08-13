@@ -46,78 +46,113 @@ const UpdateTip = () => {
     }
   };
 
-  if (!formData) return <p>Loading...</p>;
+  if (!formData) return <p className="text-gray-700 dark:text-gray-300 text-center mt-20">Loading...</p>;
 
   return (
-    <div className="flex justify-center p-6 bg-gray-100 min-h-screen">
-      <div className="bg-white shadow-lg rounded-xl w-full max-w-2xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-green-700">
+    <div className="flex justify-center bg-green-50 dark:bg-gray-900 min-h-screen py-12 px-6">
+      <div className="bg-white dark:bg-gray-800 shadow-xl rounded-3xl w-full max-w-3xl p-10 border border-green-200 dark:border-gray-700">
+        <h2 className="text-3xl font-extrabold mb-8 text-green-700 dark:text-green-400 text-center">
           Update Garden Tip
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-5">
+
+        <form onSubmit={handleSubmit} className="space-y-7">
           <input type="hidden" name="_id" value={formData._id} />
 
+          {/* Title */}
           <div>
-            <label className="block font-medium mb-1">Title</label>
+            <label htmlFor="title" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Title
+            </label>
             <input
+              id="title"
               name="title"
               defaultValue={formData.title}
-              className="w-full border rounded-lg p-3"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition"
               required
+              placeholder="Enter title"
             />
           </div>
 
+          {/* Plant Type */}
           <div>
-            <label className="block font-medium mb-1">Plant Type/Topic</label>
+            <label htmlFor="plantType" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Plant Type / Topic
+            </label>
             <input
+              id="plantType"
               name="plantType"
               defaultValue={formData.plantType}
-              className="w-full border rounded-lg p-3"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition"
               required
+              placeholder="e.g., Tomato, Rose"
             />
           </div>
 
+          {/* Difficulty Level */}
           <div>
-            <label className="block font-medium mb-1">Difficulty Level</label>
+            <label htmlFor="difficultyLevel" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Difficulty Level
+            </label>
             <select
+              id="difficultyLevel"
               name="difficultyLevel"
               defaultValue={formData.difficultyLevel}
-              className="w-full border rounded-lg p-3"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition"
               required
             >
-              <option>Easy</option>
-              <option>Medium</option>
-              <option>Hard</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
             </select>
           </div>
 
+          {/* Description */}
           <div>
-            <label className="block font-medium mb-1">Description</label>
+            <label htmlFor="description" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Description
+            </label>
             <textarea
+              id="description"
               name="description"
               defaultValue={formData.description}
-              className="w-full border rounded-lg p-3"
-              rows="4"
+              rows="5"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition resize-none"
               required
+              placeholder="Write your gardening tip here..."
             />
           </div>
 
+          {/* Image URL */}
           <div>
-            <label className="block font-medium mb-1">Image URL</label>
+            <label htmlFor="imagesUrl" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Image URL
+            </label>
             <input
+              id="imagesUrl"
               name="imagesUrl"
               defaultValue={formData.imagesUrl}
-              className="w-full border rounded-lg p-3"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition"
               required
+              placeholder="https://example.com/image.jpg"
             />
           </div>
 
+          {/* Category */}
           <div>
-            <label className="block font-medium mb-1">Category</label>
+            <label htmlFor="category" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Category
+            </label>
             <select
+              id="category"
               name="category"
               defaultValue={formData.category}
-              className="w-full border rounded-lg p-3"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition"
               required
             >
               <option>Composting</option>
@@ -128,12 +163,17 @@ const UpdateTip = () => {
             </select>
           </div>
 
+          {/* Availability */}
           <div>
-            <label className="block font-medium mb-1">Availability</label>
+            <label htmlFor="availability" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+              Availability
+            </label>
             <select
+              id="availability"
               name="availability"
               defaultValue={formData.availability}
-              className="w-full border rounded-lg p-3"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700
+                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500 transition"
               required
             >
               <option>Public</option>
@@ -141,28 +181,36 @@ const UpdateTip = () => {
             </select>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* User Email & Name */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block font-medium mb-1">User Email</label>
+              <label htmlFor="userEmail" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+                User Email
+              </label>
               <input
+                id="userEmail"
                 defaultValue={formData.userEmail}
                 readOnly
-                className="w-full border rounded-lg p-3 bg-gray-100"
+                className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 cursor-not-allowed"
               />
             </div>
             <div>
-              <label className="block font-medium mb-1">User Name</label>
+              <label htmlFor="userName" className="block text-gray-800 dark:text-gray-200 font-semibold mb-2">
+                User Name
+              </label>
               <input
+                id="userName"
                 defaultValue={formData.userName}
                 readOnly
-                className="w-full border rounded-lg p-3 bg-gray-100"
+                className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 cursor-not-allowed"
               />
             </div>
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg w-full"
+            className="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg font-semibold transition focus:outline-none focus:ring-4 focus:ring-green-300"
           >
             Update Tip
           </button>

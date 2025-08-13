@@ -51,6 +51,8 @@ export const router = createBrowserRouter([
             <TipDetails></TipDetails>
           </PrivateRoute>
         ),
+        loader: ({params})=> fetch(`http://localhost:3000/tips/${params.id}`),
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "/update-tip/:id",
